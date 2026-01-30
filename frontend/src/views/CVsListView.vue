@@ -1,9 +1,8 @@
 <template>
   <section class="cv-page container">
-	<header class="cv-header">
-	  <h1>CV</h1>
-	  <p class="lead">Votre CV affiché directement ici.</p>
-	</header>
+		<header class="cv-header">
+			<h1>CV</h1>
+		</header>
 
 	<div class="viewer">
 	  <iframe src="/cvs/Cv_cyb_rp.pdf" frameborder="0" style="width:100%; height:80vh"></iframe>
