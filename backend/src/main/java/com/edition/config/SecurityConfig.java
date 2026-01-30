@@ -42,8 +42,6 @@ public class SecurityConfig {
                 // Tous les endpoints publics d'abord
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/cvs/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/cvs").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/books").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/books/**").permitAll()
                 .requestMatchers("/h2-console/**").permitAll()

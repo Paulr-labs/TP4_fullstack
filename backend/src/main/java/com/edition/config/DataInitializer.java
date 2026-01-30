@@ -3,8 +3,6 @@ package com.edition.config;
 import com.edition.model.Book;
 import com.edition.model.BookCategory;
 import com.edition.repository.BookRepository;
-import com.edition.model.CV;
-import com.edition.repository.CVRepository;
 import com.edition.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -16,7 +14,6 @@ public class DataInitializer implements CommandLineRunner {
     
     private final UserService userService;
     private final BookRepository bookRepository;
-    private final CVRepository cvRepository;
     
     @Override
     public void run(String... args) {
@@ -131,44 +128,6 @@ public class DataInitializer implements CommandLineRunner {
             ));
             
             System.out.println(">>> 8 livres de démonstration créés");
-        }
-
-        // Seed CVs demo (si vide)
-        try {
-            if (cvRepository.count() == 0) {
-                java.nio.file.Path dir = java.nio.file.Paths.get("uploads/cvs").toAbsolutePath();
-                java.nio.file.Files.createDirectories(dir);
-
-                // Petit PDF d'exemple encodé en base64
-                String samplePdfBase64 = "JVBERi0xLjQKJeLjz9MKNCAwIG9iago8PC9UeXBlL1BhZ2UvUGFyZW50IDMgMCBSL1Jlc291cmNlczw8L0ZvbnQ8PC9GMSA1IDAgUj4+Pj4vTWVkaWFCb3hbMCAwIDU5NSA4NDJdL0NvbnRlbnRzIDYgMCBSPj4KZW5kb2JqCjUgMCBvYmoKPDwvVHlwZS9Gb250L05hbWUvRjEvQmFzZUZvbnQvSGVsdmV0aWNhPj4KZW5kb2JqCjYgMCBvYmoKPDwvTGVuZ3RoIDc2Pj4Kc3RyZWFtCkJUCjcwIDUwIFRGMQpIZWxsbywgUFBERiEhClRFAiAKZW5kc3RyZWFtCmVuZG9iagozIDAgb2JqCjw8L1R5cGUvUGFnZXMvS2lkc1sgNCAwIFJdPj4KZW5kb2JqCjIgMCBvYmoKPDwvVHlwZS9QYWdlL1BhcmVudCAzIDAgUi9SZXNvdXJjZXM8PC9YT2JqZWN0WzAgMCBdPj4vTWVkaWFCb3hbMCAwIDU5NSA4NDJdL0NvbnRlbnRzIDYgMCBSPj4KZW5kb2JqCnhyZWYKMCA3CjAwMDAwMDAwMDAgNjU1MzUgZgowMDAwMDAwMDExIDAwMDAwIG4KMDAwMDAwMDA3NCAwMDAwMCBuCjAwMDAwMDAxMzAgMDAwMDAgbiAKMDAwMDAwMDA0OCAwMDAwMCBuCjAwMDAwMDAwOTAgMDAwMDAgbiAKdHJhaWxlcgo8PC9TaXplIDc+PgpzdGFydHhyZWYKODgKJSVFT0Y=";
-
-                byte[] bytes = java.util.Base64.getDecoder().decode(samplePdfBase64);
-                java.nio.file.Path f1 = dir.resolve("paul_cv_sample.pdf");
-                java.nio.file.Path f2 = dir.resolve("marie_cv_sample.pdf");
-                java.nio.file.Files.write(f1, bytes);
-                java.nio.file.Files.write(f2, bytes);
-
-                CV cv1 = new CV();
-                cv1.setName("CV - Paul Rousseau (exemple)");
-                cv1.setFilename("paul_cv_sample.pdf");
-                cv1.setOwner("paulr");
-                cv1.setDescription("Exemple de CV au format PDF. Remplacez ce fichier par vos CV réels dans uploads/cvs.");
-                cv1.setUploadedAt(java.time.LocalDateTime.now());
-
-                CV cv2 = new CV();
-                cv2.setName("CV - Marie Dupont (exemple)");
-                cv2.setFilename("marie_cv_sample.pdf");
-                cv2.setOwner("maried");
-                cv2.setDescription("Deuxième exemple.");
-                cv2.setUploadedAt(java.time.LocalDateTime.now());
-
-                cvRepository.save(cv1);
-                cvRepository.save(cv2);
-
-                System.out.println(">>> 2 CVs de démonstration créés dans uploads/cvs/");
-            }
-        } catch (Exception e) {
-            System.err.println("Erreur lors du seed des CVs: " + e.getMessage());
         }
     }
 }

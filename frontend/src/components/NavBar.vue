@@ -27,8 +27,6 @@ function handleLogout() {
       <div class="nav-links">
         <RouterLink to="/" class="nav-link">Accueil</RouterLink>
         <RouterLink to="/books" class="nav-link">Catalogue</RouterLink>
-        <RouterLink to="/cvs" class="nav-link">CV</RouterLink>
-        <RouterLink v-if="isAuthenticated" to="/cv" class="nav-link">Mon CV</RouterLink>
         
         <template v-if="isAdmin">
           <RouterLink to="/admin" class="nav-link nav-link-admin">
