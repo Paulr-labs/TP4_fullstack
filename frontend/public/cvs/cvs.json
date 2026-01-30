@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "name": "CV - Paul Rousseau (exemple)",
+    "filename": "paul_cv_sample.pdf",
+    "owner": "paulr",
+    "description": "Exemple de CV au format PDF. Remplacez ce fichier par vos CV réels dans public/cvs/."
+  },
+  {
+    "id": "2",
+    "name": "CV - Marie Dupont (exemple)",
+    "filename": "marie_cv_sample.pdf",
+    "owner": "maried",
+    "description": "Deuxième exemple."
+  }
+]
