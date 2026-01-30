@@ -17,6 +17,19 @@ const router = createRouter({
       meta: { title: 'Catalogue' }
     },
     {
+      path: '/cvs',
+      name: 'cvs',
+      component: () => import('@/views/CVsListView.vue'),
+      meta: { title: 'CVs' }
+    },
+    {
+      path: '/cvs/:id',
+      name: 'cv-detail',
+      component: () => import('@/views/CVDetailView.vue'),
+      props: true,
+      meta: { title: 'CV' }
+    },
+    {
       path: '/books/:id',
       name: 'book-detail',
       component: () => import('@/views/BookDetailView.vue'),
