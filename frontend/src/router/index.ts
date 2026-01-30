@@ -73,6 +73,12 @@ const router = createRouter({
       }
     },
     {
+      path: '/cv',
+      name: 'cv',
+      component: () => import('@/views/CVView.vue'),
+      meta: { title: 'Mon CV', requiresAuth: true }
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('@/views/NotFoundView.vue'),
